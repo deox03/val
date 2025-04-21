@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color:white;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 50px;
+    background-color: #F5F5F6;
+  }
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #9ca3af;
+    font-weight: 500;
+  }
+a.bank{
+    color: black;
+}
+  .nav a.active {
+    color: black;
+    font-weight: bold;
+  }
+
+  .login-btn {
+    background-color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .login-btn:hover {
+    background-color: #e5e7eb;
+  }
+  section {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    color: #111;
+
+  }
+  .esas {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+  
+  .esasblok {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .blok1 {
+    flex: 1;
+    min-width: 300px;
+  }
+  .blok2 {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  span {
+    display: block;
+    margin-bottom: 8px;
+    color: #888;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .valyuta1 {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .valyuta {
+    display: flex;
+    width: 100%; 
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .val {
+    flex: 1;
+    padding: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f6f6f6;
+    color: #555;
+    font-weight: bold;
+
+  }
+  .val.aktiv1 {
+    background-color: #7c3aed;
+    color: white;
+    border-color: transparent;
+  }
+  .val.aktiv2 {
+    background-color: #7c3aed;
+    color: white;
+    border-color: transparent;
+  }
+  
+  /* .qiymet{
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .qiymet .value {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  } */
+  .qiymet {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .qiymet .value {
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: #000;
+  }  
+  .qiymet .deyer {
+    font-size: 13px;
+    color: #888;
+  }
+  
+  .footer-logo {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+
+  
