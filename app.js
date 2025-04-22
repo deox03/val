@@ -1,97 +1,87 @@
-const blok1Btns = document.querySelectorAll(".blok1 .val");
-const blok2Btns = document.querySelectorAll(".blok2 .val");
-
-const blok1Input = document.querySelector(".blok1 .value");
-const blok2Input = document.querySelector(".blok2 .value");
-
-const blok1Info = document.querySelector(".blok1 .deyer");
-const blok2Info = document.querySelector(".blok2 .deyer");
-
-let fromCurrency = "RUB";
-let toCurrency = "USD";
-
-let fromAmount = parseFloat(blok1Input.value);
-let toAmount = parseFloat(blok2Input.value);
-
-let lastEdited = "from"; // hansı tərəfdə yazılıbsa onu əsas götürürük
-
+const blok1 = document.querySelectorAll(".blok1 .val");
+const blok2 = document.querySelectorAll(".blok2 .val");
+const block1value = document.querySelector(".blok1 .value");
+const block2value = document.querySelector(".blok2 .value");
+const block1deyer = document.querySelector(".blok1 .deyer");
+const block2deyer = document.querySelector(".blok2 .deyer");
+let fromcurrency = "RUB";
+let tocurrency = "USD";
+let fromvalue = parseFloat(block1value.value) || 0;
+let tovalue = parseFloat(block2value.value) || 0;
+let sondeysime = "from";
 const apiKey = "12ab51b9e85f151198e6d3ab";
-
 function setActive(buttons, className, clickedBtn) {
   buttons.forEach(btn => btn.classList.remove(className));
   clickedBtn.classList.add(className);
 }
-
-async function fetchRate(base, target) {
-  const res = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/${base}`);
+async function mezenne(ceviren, cevrilen) {
+  const res = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/${ceviren}`);
   const data = await res.json();
-  return data.conversion_rates[target];
+  return data.conversion_rates[cevrilen];
 }
 
-async function convert() {
-  if (fromCurrency === toCurrency) {
-    if (lastEdited === "from") {
-      toAmount = fromAmount;
-      blok2Input.value = toAmount.toFixed(2);
+async function cevirme() {
+  if (fromcurrency === tocurrency) {
+    if (sondeysime === "from") {
+      tovalue = fromvalue;
+      block2value.value = parseFloat(tovalue.toFixed(5)).toString();
     } else {
-      fromAmount = toAmount;
-      blok1Input.value = fromAmount.toFixed(2);
+      fromvalue = tovalue;
+      block1value.value = parseFloat(fromvalue.toFixed(5)).toString();
     }
-    blok1Info.textContent = `1 ${fromCurrency} = 1 ${toCurrency}`;
-    blok2Info.textContent = `1 ${toCurrency} = 1 ${fromCurrency}`;
+
+    block1deyer.textContent = `1 ${fromcurrency} = ${parseFloat(qiymet.toFixed(5)).toString()} ${tocurrency}`;
+    block2deyer.textContent = `1 ${tocurrency} = ${parseFloat((1 / qiymet).toFixed(5)).toString()} ${fromcurrency}`;
+    
     return;
   }
 
-  if (lastEdited === "from") {
-    const rate = await fetchRate(fromCurrency, toCurrency);
-    toAmount = fromAmount * rate;
-    blok2Input.value = toAmount.toFixed(2);
-    blok1Info.textContent = `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
-    blok2Info.textContent = `1 ${toCurrency} = ${(1 / rate).toFixed(4)} ${fromCurrency}`;
+  if (sondeysime === "from") {
+    const qiymet = await mezenne(fromcurrency, tocurrency);
+    tovalue = fromvalue * qiymet;
+    block2value.value = parseFloat(tovalue.toFixed(5)).toString();
+    block1deyer.textContent = `1 ${fromcurrency} = ${parseFloat(qiymet.toFixed(5)).toString()} ${tocurrency}`;
+    block2deyer.textContent = `1 ${tocurrency} = ${parseFloat((1 / qiymet).toFixed(5)).toString()} ${fromcurrency}`;
+    
   } else {
-    const rate = await fetchRate(toCurrency, fromCurrency);
-    fromAmount = toAmount * rate;
-    blok1Input.value = fromAmount.toFixed(2);
-    blok2Info.textContent = `1 ${toCurrency} = ${rate.toFixed(4)} ${fromCurrency}`;
-    blok1Info.textContent = `1 ${fromCurrency} = ${(1 / rate).toFixed(4)} ${toCurrency}`;
+    const qiymet = await mezenne(tocurrency, fromcurrency);
+    fromvalue = tovalue * qiymet;
+    block1value.value = parseFloat(fromvalue.toFixed(5)).toString();
+    block1deyer.textContent = `1 ${fromcurrency} = ${parseFloat((1 / qiymet).toFixed(5)).toString()} ${tocurrency}`;
+    block2deyer.textContent = `1 ${tocurrency} = ${parseFloat(qiymet.toFixed(5)).toString()} ${fromcurrency}`;
+    ;
   }
 }
 
-// Valyuta düymələri
-blok1Btns.forEach(btn => {
+blok2.forEach(btn => {
   btn.addEventListener("click", () => {
-    fromCurrency = btn.textContent;
-    setActive(blok1Btns, "aktiv1", btn);
-    fromAmount = parseFloat(blok1Input.value) || 0;
-    convert();
+    tocurrency = btn.textContent;
+    setActive(blok2, "aktiv2", btn);
+    tovalue = parseFloat(block2value.value) || 0;
+    cevirme();
   });
 });
-
-blok2Btns.forEach(btn => {
+blok1.forEach(btn => {
   btn.addEventListener("click", () => {
-    toCurrency = btn.textContent;
-    setActive(blok2Btns, "aktiv2", btn);
-    toAmount = parseFloat(blok2Input.value) || 0;
-    convert();
+    fromcurrency = btn.textContent;
+    setActive(blok1, "aktiv1", btn);
+    fromvalue = parseFloat(block1value.value) || 0;
+    cevirme();
   });
 });
-
-// Input yazılarkən dəyişiklik
-blok1Input.addEventListener("input", () => {
-  fromAmount = parseFloat(blok1Input.value) || 0;
-  lastEdited = "from";
-  convert();
+block1value.addEventListener("input", () => {
+  fromvalue = parseFloat(block1value.value) || 0;
+  sondeysime = "from";
+  cevirme();
 });
 
-blok2Input.addEventListener("input", () => {
-  toAmount = parseFloat(blok2Input.value) || 0;
-  lastEdited = "to";
-  convert();
+block2value.addEventListener("input", () => {
+  tovalue = parseFloat(block2value.value) || 0;
+  sondeysime = "to";
+  cevirme();
 });
-
-// Sayt yüklənəndə
 window.addEventListener("DOMContentLoaded", () => {
-  setActive(blok1Btns, "aktiv1", document.querySelector(".blok1 .val.aktiv1"));
-  setActive(blok2Btns, "aktiv2", document.querySelector(".blok2 .val.aktiv2"));
-  convert();
+  setActive(blok1, "aktiv1", document.querySelector(".blok1 .val.aktiv1"));
+  setActive(blok2, "aktiv2", document.querySelector(".blok2 .val.aktiv2"));
+  cevirme();
 });

@@ -118,19 +118,7 @@ a.bank{
     color: white;
     border-color: transparent;
   }
-  
-  /* .qiymet{
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  .qiymet .value {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 8px;
-  } */
+
   .qiymet {
     border: 1px solid #eee;
     border-radius: 12px;
@@ -162,6 +150,11 @@ a.bank{
     align-items: center;
 
   }
-  
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
   
