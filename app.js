@@ -30,8 +30,8 @@ async function cevirme() {
       block1value.value = parseFloat(fromvalue.toFixed(5)).toString();
     }
 
-    block1deyer.textContent = `1 ${fromcurrency} = ${parseFloat(qiymet.toFixed(5)).toString()} ${tocurrency}`;
-    block2deyer.textContent = `1 ${tocurrency} = ${parseFloat((1 / qiymet).toFixed(5)).toString()} ${fromcurrency}`;
+    block1deyer.textContent = `1 ${fromcurrency} = 1 ${tocurrency}`;
+    block2deyer.textContent = `1 ${tocurrency} = 1 ${fromcurrency}`;
     
     return;
   }
@@ -39,17 +39,15 @@ async function cevirme() {
   if (sondeysime === "from") {
     const qiymet = await mezenne(fromcurrency, tocurrency);
     tovalue = fromvalue * qiymet;
-    block2value.value = parseFloat(tovalue.toFixed(5)).toString();
-    block1deyer.textContent = `1 ${fromcurrency} = ${parseFloat(qiymet.toFixed(5)).toString()} ${tocurrency}`;
-    block2deyer.textContent = `1 ${tocurrency} = ${parseFloat((1 / qiymet).toFixed(5)).toString()} ${fromcurrency}`;
-    
+    block2value.value = tovalue;
+    block1deyer.textContent = `1 ${fromcurrency} = ${qiymet} ${tocurrency}`;
+    block2deyer.textContent = `1 ${tocurrency} = ${(1 / qiymet)} ${fromcurrency}`;
   } else {
     const qiymet = await mezenne(tocurrency, fromcurrency);
     fromvalue = tovalue * qiymet;
-    block1value.value = parseFloat(fromvalue.toFixed(5)).toString();
-    block1deyer.textContent = `1 ${fromcurrency} = ${parseFloat((1 / qiymet).toFixed(5)).toString()} ${tocurrency}`;
-    block2deyer.textContent = `1 ${tocurrency} = ${parseFloat(qiymet.toFixed(5)).toString()} ${fromcurrency}`;
-    ;
+    block1value.value = fromvalue;
+    block1deyer.textContent = `1 ${fromcurrency} = ${(1 / qiymet)} ${tocurrency}`;
+    block2deyer.textContent = `1 ${tocurrency} = ${qiymet} ${fromcurrency}`;
   }
 }
 
