@@ -19,15 +19,18 @@ async function mezenne(ceviren, cevrilen) {
   const data = await res.json();
   return data.conversion_rates[cevrilen];
 }
+function temizleRaqem(deyer) {
+  return parseFloat(deyer.toFixed(5)).toString();
+}
 
 async function cevirme() {
   if (fromcurrency === tocurrency) {
     if (sondeysime === "from") {
       tovalue = fromvalue;
-      block2value.value = parseFloat(tovalue.toFixed(5)).toString();
+      block2value.value = temizleRaqem(tovalue);
     } else {
       fromvalue = tovalue;
-      block1value.value = parseFloat(fromvalue.toFixed(5)).toString();
+      block1value.value = temizleRaqem(fromvalue);
     }
 
     block1deyer.textContent = `1 ${fromcurrency} = 1 ${tocurrency}`;
@@ -39,17 +42,18 @@ async function cevirme() {
   if (sondeysime === "from") {
     const qiymet = await mezenne(fromcurrency, tocurrency);
     tovalue = fromvalue * qiymet;
-    block2value.value = tovalue;
-    block1deyer.textContent = `1 ${fromcurrency} = ${qiymet} ${tocurrency}`;
-    block2deyer.textContent = `1 ${tocurrency} = ${(1 / qiymet)} ${fromcurrency}`;
+    block2value.value = temizleRaqem(tovalue);
+    block1deyer.textContent = `1 ${fromcurrency} = ${temizleRaqem(qiymet)} ${tocurrency}`;
+    block2deyer.textContent = `1 ${tocurrency} = ${temizleRaqem(1 / qiymet)} ${fromcurrency}`;
   } else {
     const qiymet = await mezenne(tocurrency, fromcurrency);
     fromvalue = tovalue * qiymet;
-    block1value.value = fromvalue;
-    block1deyer.textContent = `1 ${fromcurrency} = ${(1 / qiymet)} ${tocurrency}`;
-    block2deyer.textContent = `1 ${tocurrency} = ${qiymet} ${fromcurrency}`;
+    block1value.value = temizleRaqem(fromvalue);
+    block1deyer.textContent = `1 ${fromcurrency} = ${temizleRaqem(1 / qiymet)} ${tocurrency}`;
+    block2deyer.textContent = `1 ${tocurrency} = ${temizleRaqem(qiymet)} ${fromcurrency}`;
   }
 }
+
 
 blok2.forEach(btn => {
   btn.addEventListener("click", () => {
