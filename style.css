@@ -48,7 +48,6 @@ a.bank{
     font-family: "Roboto", sans-serif;
     background-color: white;
     color: #111;
-
   }
   .esas {
     max-width: 900px;
@@ -106,7 +105,6 @@ a.bank{
     background-color: #f6f6f6;
     color: #555;
     font-weight: bold;
-
   }
   .val.aktiv1 {
     background-color: #7c3aed;
@@ -148,7 +146,6 @@ a.bank{
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -156,5 +153,240 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color:white;
+  }
 
-  
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+  }
+
+  .nav a {
+    text-decoration: none;
+    font-size: 10px;
+    color: #9ca3af;
+    font-weight: 350;
+  }
+  .login-btn {
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .esas {
+    max-width: 600px;
+    margin: 45px auto;
+    padding: 0 20px;
+  }
+  h1 {
+    font-size: 21px;
+    margin-bottom: 30px;
+  }
+  .esasblok {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .blok1 {
+    flex: 1;
+    min-width: 225px;
+  }
+  .blok2 {
+    flex: 1;
+    min-width: 225px;
+  }
+  span {
+    display: block;
+    margin-bottom: 6px;
+    color: #888;
+    font-size: 10px;
+    text-align: left;
+  }
+  .valyuta1 {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 15px;
+  }
+  .valyuta {
+    display: flex;
+    width: 100%; 
+    gap: 6px;
+    margin-bottom: 15px;
+  }
+  .val {
+    flex: 1;
+    padding: 7px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #f6f6f6;
+    color: #555;
+    font-weight: bold;
+  }
+  .qiymet {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .qiymet .value {
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: #000;
+  }  
+  .qiymet .deyer {
+    font-size: 10px;
+    color: #888;
+  }
+  .footer-logo {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 767px) {
+  body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color:white;
+  }
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+  }
+
+  .nav a {
+    text-decoration: none;
+    font-size: 5px;
+    color: #9ca3af;
+    font-weight: 200;
+  }
+  .login-btn {
+    background-color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 3px 9px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .esas {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 0 10px;
+  }
+  h1 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  .esasblok {
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .blok1 {
+    flex: 1;
+    min-width: 160px;
+  }
+  .blok2 {
+    flex: 1;
+    min-width: 160px;
+  }
+  span {
+    display: block;
+    margin-bottom: 3px;
+    color: #888;
+    font-size: 7px;
+    text-align: left;
+  }
+  .valyuta1 {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .valyuta {
+    display: flex;
+    width: 100%; 
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .val {
+    flex: 1;
+    padding: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #f6f6f6;
+    color: #555;
+    font-weight: bold;
+  }
+  .qiymet {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .qiymet .value {
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: #000;
+  }  
+  .qiymet .deyer {
+    font-size: 7px;
+    color: #888;
+  }
+  .footer-logo {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.internet-error {
+  display: inline-block;
+  background-color: #f87171; 
+  color: white;
+  padding: 6px 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}

@@ -85,3 +85,16 @@ window.addEventListener("DOMContentLoaded", () => {
   setActive(blok2, "aktiv2", document.querySelector(".blok2 .val.aktiv2"));
   cevirme();
 });
+
+const internetStatus = document.getElementById("internet-status");
+
+function updateInternetStatus() {
+  if (navigator.onLine) {
+    internetStatus.classList.add("hidden");
+  } else {
+    internetStatus.classList.remove("hidden");
+  }
+}
+window.addEventListener("online", updateInternetStatus);
+window.addEventListener("offline", updateInternetStatus);
+updateInternetStatus();
